@@ -32,13 +32,23 @@ function App() {
     return (
         <div className="app">
             <div className="sidebar">
-                <FriendsList friends={friends} onSelectedFriend={handleSelectedFriend} selectedFriend={selectedFriend} />
+                <FriendsList
+                    friends={friends}
+                    onSelectedFriend={handleSelectedFriend}
+                    selectedFriend={selectedFriend}
+                />
 
                 {addFriendForm && <AddFriendForm onAddNewFriend={handleFriends} />}
 
                 <Button onClick={handleAddFriendForm}>{addFriendForm ? "close" : "add"}</Button>
             </div>
-            {selectedFriend && <SplitBillForm selectedFriend={selectedFriend} onSplitBill={handleUpdatedFriends} />}
+            {selectedFriend && (
+                <SplitBillForm
+                    selectedFriend={selectedFriend}
+                    onSplitBill={handleUpdatedFriends}
+                    key={selectedFriend.id}
+                />
+            )}
         </div>
     );
 }
